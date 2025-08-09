@@ -53,7 +53,7 @@ sessionRouter.get('/terminateAll', sessionController.terminateAllSessions)
 
 const clientRouter = express.Router()
 clientRouter.use(middleware.apikey)
-sessionRouter.use(middleware.clientSwagger)
+clientRouter.use(middleware.clientSwagger)
 routes.use('/client', clientRouter)
 
 clientRouter.get('/getClassInfo/:sessionId', [middleware.sessionNameValidation, middleware.sessionValidation], clientController.getClassInfo)
@@ -99,7 +99,7 @@ clientRouter.get('/getWWebVersion/:sessionId', [middleware.sessionNameValidation
  */
 const chatRouter = express.Router()
 chatRouter.use(middleware.apikey)
-sessionRouter.use(middleware.chatSwagger)
+chatRouter.use(middleware.chatSwagger)
 routes.use('/chat', chatRouter)
 
 chatRouter.post('/getClassInfo/:sessionId', [middleware.sessionNameValidation, middleware.sessionValidation], chatController.getClassInfo)
@@ -118,7 +118,7 @@ chatRouter.post('/sendStateTyping/:sessionId', [middleware.sessionNameValidation
  */
 const groupChatRouter = express.Router()
 groupChatRouter.use(middleware.apikey)
-sessionRouter.use(middleware.groupChatSwagger)
+groupChatRouter.use(middleware.groupChatSwagger)
 routes.use('/groupChat', groupChatRouter)
 
 groupChatRouter.post('/getClassInfo/:sessionId', [middleware.sessionNameValidation, middleware.sessionValidation], groupChatController.getClassInfo)
@@ -143,7 +143,7 @@ groupChatRouter.post('/deletePicture/:sessionId', [middleware.sessionNameValidat
  */
 const messageRouter = express.Router()
 messageRouter.use(middleware.apikey)
-sessionRouter.use(middleware.messageSwagger)
+messageRouter.use(middleware.messageSwagger)
 routes.use('/message', messageRouter)
 
 messageRouter.post('/getClassInfo/:sessionId', [middleware.sessionNameValidation, middleware.sessionValidation], messageController.getClassInfo)
@@ -167,7 +167,7 @@ messageRouter.post('/unstar/:sessionId', [middleware.sessionNameValidation, midd
  */
 const contactRouter = express.Router()
 contactRouter.use(middleware.apikey)
-sessionRouter.use(middleware.contactSwagger)
+contactRouter.use(middleware.contactSwagger)
 routes.use('/contact', contactRouter)
 
 contactRouter.post('/getClassInfo/:sessionId', [middleware.sessionNameValidation, middleware.sessionValidation], contactController.getClassInfo)
