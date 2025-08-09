@@ -316,9 +316,11 @@ const initializeEvents = (client, sessionId) => {
 
   client.on('qr', (qr) => {
     // inject qr code into session
+    console.log('===========qr============')
     client.qr = qr
     checkIfEventisEnabled('qr')
       .then(_ => {
+        console.log('===========qr triggerWebhook============')
         triggerWebhook(sessionWebhook, sessionId, 'qr', { qr })
       })
   })
@@ -326,6 +328,7 @@ const initializeEvents = (client, sessionId) => {
   checkIfEventisEnabled('ready')
     .then(_ => {
       client.on('ready', () => {
+        console.log('===========ready============')
         triggerWebhook(sessionWebhook, sessionId, 'ready')
       })
     })
